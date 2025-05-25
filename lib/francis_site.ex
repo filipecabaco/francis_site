@@ -77,7 +77,7 @@ defmodule FrancisSite do
     <meta name="twitter:title" content="Francis - DSL for your Elixir web application">
     <meta name="twitter:description" content="A lightweight DSL for building Elixir web applications with HTTP actions, WebSockets, static content serving, and more.">
     <meta name="twitter:image" content="https://francis.build/ogp.png">
-
+    <meta name="twitter:summary_large_image" content="https://francis.build/ogp.png">
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
     """
   )
