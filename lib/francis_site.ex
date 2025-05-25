@@ -5,20 +5,11 @@ defmodule FrancisSite do
 
   htmx(
     fn _ ->
-      assigns = %{
-        demos: demos(),
-        deploy: deploy(),
-        code: """
-          defmodule Francis do
-            use Francis
-            get("/", fn _ -> "hello world" end)
-          end
-        """
-      }
+      assigns = %{demos: demos(), deploy: deploy()}
 
       ~E"""
       <div class="p-20 font-mono z-10">
-        <div class="bg-white rounded-xl p-4 shadow-xl flex flex-col gap-2 w-rem">
+        <div class="bg-white rounded-xl p-4 shadow-xl flex flex-col gap-2">
           <div class="flex flex items-center">
             <img class="w-[2rem] h-auto" src="/icon.png">
             <h1 class="text-4xl text-bold"> Francis </h1>
