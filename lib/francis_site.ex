@@ -5,7 +5,7 @@ defmodule FrancisSite do
 
   htmx(
     fn _ ->
-      assigns = %{demos: demos(), deploy: deploy()}
+      assigns = %{demos: demos(), deploy: deploy(), install: install()}
 
       ~E"""
       <div class="p-20 font-mono z-10">
@@ -15,14 +15,12 @@ defmodule FrancisSite do
             <h1 class="text-4xl text-bold"> Francis </h1>
           </div>
           <p class="text-2xl">DSL for your Elixir web application</p>
-          <p> Documentation: <a href="https://hexdocs.pm/francis/readme.html" class="text-blue-500">hexdocs.pm/francis</a></p>
-          <p class="text-md">To install it, add the following to your mix.exs:</p>
-          <pre><code class="language-elixir text-md">{:francis, "~> 0.1.0"}</code></pre>
-        </div>
 
-        <div class="bg-white rounded-xl p-4 shadow-xl mt-5">
-          <p>Deploy it with 2 commands</p>
+          <p class="text-md">Start with 2 commands</p>
+          <pre><code class="language-bash text-md"><%= @install %></code></pre>
+          <p>Deploy with 2 commands</p>
           <pre><code class="language-bash text-md"><%= @deploy %></code></pre>
+          <p> Check the documentation at <a href="https://hexdocs.pm/francis/readme.html" class="text-blue-500" target="_blank">hexdocs.pm/francis</a></p>
         </div>
 
         <div class="mt-5 grid lg:grid-cols-2 grid-cols-1 gap-2 justify-center items-center w-full">
@@ -36,14 +34,14 @@ defmodule FrancisSite do
 
 
         <div class="bg-white rounded-xl p-4 shadow-xl mt-5">
-          <p>It also enables you to build simple <a href="htmx.org" class="text-blue-500">htmx.org</a> websites with a small code footprint using <a href="https://github.com/filipecabaco/francis_htmx" class="text-blue-500">github.com/filipecabaco/francis_htmx</a></p>
+          <p>It also enables you to build simple <a href="htmx.org" class="text-blue-500" target="_blank">htmx.org</a> websites with a small code footprint using <a href="https://github.com/francis-build/francis_htmx" class="text-blue-500" target="_blank">github.com/francis-build/francis_htmx</a></p>
           <p class="text-md">To install it in your project, add the following to your mix.exs:</p>
           <pre><code class="language-elixir">{:francis_htmx, "~> 0.1.0"}</code></pre>
         </div>
 
         <div class="bg-white rounded-xl p-4 shadow-xl mt-5">
-          <p class="text-md">For more information and contribute, check out the repository at <a href="https://github.com/filipecabaco/francis" class="text-blue-500">github.com/filipecabaco/francis</a></p>
-          <p class="text-md">Check the code for this website at <a href="https://github.com/filipecabaco/francis_site" class="text-blue-500">github.com/filipecabaco/francis_site</a></p>
+          <p class="text-md">For more information and contribute, check out the repository at <a href="https://github.com/francis-build/francis" class="text-blue-500" target="_blank">github.com/francis-build/francis</a></p>
+          <p class="text-md">Check the code for this website at <a href="https://github.com/francis-build/francis_site" class="text-blue-500" target="_blank">github.com/francis-build/francis_site</a></p>
         </div>
       </div>
       <div class="top-0 fixed pattern h-full w-full z-[-10]"></div>
@@ -81,6 +79,12 @@ defmodule FrancisSite do
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
     """
   )
+
+  defp install(),
+    do: """
+    mix archive.install hex francis
+    mix francis.new my_app
+    """
 
   defp deploy(),
     do: """
